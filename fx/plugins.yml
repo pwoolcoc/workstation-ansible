@@ -1,0 +1,37 @@
+---
+- name: Download Pentadactyl
+  sudo: no
+  get_url: url=http://5digits.org/nightly/pentadactyl-latest.xpi dest={{ downloads }}/pentadactyl-latest.xpi
+
+- name: Install Pentadactyl
+  sudo: no
+  shell: >
+    cd ~/.mozilla/firefox/*.default/extensions && unzip -u {{ downloads }}/pentadactyl-latest.xpi -d pentadactyl\@dactyl.googlecode.com
+
+- name: Download Adblock Edge
+  sudo: no
+  get_url: url=https://addons.mozilla.org/firefox/downloads/latest/394968/platform:2/addon-394968-latest.xpi dest={{ downloads }}/adblock-edge.xpi
+
+- name: Install Adblock Edge
+  sudo: no
+  shell: >
+      cd ~/.mozilla/firefox/*.default/extensions && unzip -u {{ downloads }}/adblock-edge.xpi -d adblock-edge
+
+- name: Download LastPass
+  sudo: no
+  get_url: url=https://lastpass.com/download/cdn/lp_linux.xpi dest={{ downloads }}/lp_linux.xpi
+
+- name: Install LastPass
+  sudo: no
+  shell: >
+      cd ~/.mozilla/firefox/*.default/extensions && unzip -u {{ downloads }}/lp_linux.xpi -d lp_linux
+
+- name: Download Privacy Badger
+  sudo: no
+  get_url: url=https://s.eff.org/files/privacy-badger-latest.xpi dest={{ downloads }}/privacy-badger-latest.xpi
+
+- name: Install Privacy Badger
+  sudo: no
+  shell: >
+    cd ~/.mozilla/firefox/*.default/extensions && unzip -u {{ downloads }}/privacy-badger-latest.xpi -d privacy-badger
+

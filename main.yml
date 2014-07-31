@@ -1,0 +1,19 @@
+---
+- name: Workstation playbook
+  hosts: 127.0.0.1
+  user: paul
+  connection: local
+
+  vars:
+    downloads: ~/.ansible-downloads/
+
+  tasks:
+    - name: Create Ansible downloads directory
+      file: path={{ downloads }} state=directory
+    - name: Make sure everything is updated
+      apt: upgrade=dist update_cache=yes
+      sudo: yes
+    - include: preferences/dotfiles.yml
+    - include: preferences/vimplugins.yml
+    - include: apps.yml
+    # - include: fx/plugins.yml

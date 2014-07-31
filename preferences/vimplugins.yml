@@ -1,0 +1,5 @@
+- name: Clone my Vim directory
+  git: >
+    repo=https://github.com/pwoolcoc/vim-directory.git
+    dest=~/.vim
+  sudo: no

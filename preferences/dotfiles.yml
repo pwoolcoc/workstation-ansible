@@ -1,0 +1,9 @@
+- name: Clone my dotfiles repo
+  git: >
+    repo=https://github.com/pwoolcoc/dotfiles.git
+    dest=~/.dotfiles
+  sudo: no
+
+- name: Install dotfiles
+  sudo: no
+  shell: bash ~/.dotfiles/setup chdir=~/.dotfiles
