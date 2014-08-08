@@ -1,0 +1,27 @@
+---
+- name: Vala HEAD install
+  hosts: 127.0.0.1
+  user: paul
+  connection: local
+  tasks:
+    - name: Checkout source code
+      sudo: no
+      git: repo=git://git.gnome.org/vala
+           dest=~/ports/vala
+    - name: Run autogen
+      sudo: no
+      shell: >
+          ./autogen.sh --prefix=/usr/local
+          chdir=~/ports/vala
+    - name: Run configure
+      sudo: no
+      shell: >
+          ./configure --prefix=/usr/local
+          chdir=~/ports/vala
+    - name: Make and install
+      sudo: no
+      shell: >
+          make && make install
+          chdir=~/ports/vala
+
+

@@ -1,0 +1,12 @@
+---
+- name: Julia git install
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - name: Download julia
+      git: repo=https://github.com/JuliaLang/julia.git
+           dest=~/ports/julia
+
+    - name: Build Julia from source
+      shell: >
+          cd ~/ports/julia && make
